@@ -1,10 +1,9 @@
 import React from 'react';
+import Router from 'router';
 
 function App() {
   return (
-    <div>
-      This page still on under construction
-    </div>
+    <Router />
   );
 }
 
