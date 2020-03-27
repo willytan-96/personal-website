@@ -1,18 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { NavLink } from 'react-router-dom';
-import { MdHome, MdInfo } from "react-icons/md"
-
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { MdClose, MdMenu } from 'react-icons/md';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import sidebarMenus from 'router/sidebar.routes';
 // Styling Sidebar
-import "./index.scss";
+import './styles.scss';
 
 function Sidebar(props) {
-  const { content: ContentComponent, menus } = props;
-
+  const { content: ContentComponent } = props;
+  const [onExpand, setOnExpand] = useState(false);
+  const onExpandButtonClick = () => setOnExpand(!onExpand);
+  const expandClassname = onExpand ? 'sidebar-wrapper--full-width' : '';
+  
+  const location = useLocation();
+  const currentPath = location.pathname;
   return (
-    <div className="sidebar">
-      <div className="sidebar-wrapper">
-        {menus.map((menu) => {
+    <div className='sidebar'>
+      <div className={`sidebar-wrapper ${expandClassname}`}>
+        {sidebarMenus.map((menu, index) => {
           const {
             Icon,
             path,
@@ -20,13 +26,31 @@ function Sidebar(props) {
           } = menu;
 
           return (
-            <NavLink className="sidebar-menu-wrapper" to={path}>
+            <Link
+              key={index}
+              className={`sidebar-menu-wrapper sidebar-item ${currentPath === path ? 'active' : ''}`}
+              to={path}
+            >
               <Icon />
-            </NavLink>
+              { onExpand ? <span className='sidebar-item-title'>{title}</span> : null}
+            </Link>
           )
         })}
+        <div className='sidebar-separator' />
+        <div
+          className='sidebar-expand-wrapper sidebar-item'
+          role='presentation'
+          onClick={onExpandButtonClick}
+        >
+          { onExpand ? (
+            <React.Fragment>
+              <MdClose />
+              <span className='sidebar-item-title'>Hide</span>
+            </React.Fragment>
+          ) : <MdMenu />}
+        </div>
       </div>
-      <div className="sidebar-content">
+      <div className='sidebar-content'>
         <ContentComponent />
       </div>
     </div>
@@ -35,17 +59,6 @@ function Sidebar(props) {
 
 Sidebar.propTypes = {
   content: PropTypes.func.isRequired,
-  menus: PropTypes.arrayOf(
-    PropTypes.shape({
-      Icon: PropTypes.func.isRequired,
-      path: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  )
-}
-
-Sidebar.defaultProps = {
-  menus: [],
 }
 
 export default Sidebar;
