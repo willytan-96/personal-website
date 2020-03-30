@@ -3,7 +3,7 @@ import React from 'react';
 import './styles.scss';
 import { MdEmail, MdPhone, MdPermIdentity } from 'react-icons/md';
 
-function MyContactPage() {
+function PersonalInformationPage() {
 
   const informations = [
     {
@@ -25,7 +25,7 @@ function MyContactPage() {
 
   return (
     <React.Fragment>
-      <h3>My Contact</h3>
+      <h3 className="heading-3 information-title">Personal Information</h3>
       <div>
         {informations.map((information, index) => (
           <div className='information-row' key={index}>
@@ -44,4 +44,4 @@ function MyContactPage() {
   );
 }
 
-export default MyContactPage;
+export default PersonalInformationPage;

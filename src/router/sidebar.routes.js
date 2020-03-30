@@ -1,6 +1,6 @@
 import {
   HomePage,
-  MyContactPage,
+  PersonalInformationPage,
 } from 'pages';
 import { MdHome, MdPermIdentity } from 'react-icons/md';
 
@@ -13,11 +13,11 @@ const routes = [
     title: 'Home',
   },
   {
-    Component: MyContactPage,
+    Component: PersonalInformationPage,
     exact: true,
     Icon: MdPermIdentity,
-    path: '/contact',
-    title: 'My Contact',
+    path: '/personal-information',
+    title: 'Personal Information',
   }
 ];
 

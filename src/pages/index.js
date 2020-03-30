@@ -1,7 +1,7 @@
 import HomePage from './HomePage';
-import MyContactPage from './MyContactPage';
+import PersonalInformationPage from './PersonalInformationPage';
 
 export {
   HomePage,
-  MyContactPage,
+  PersonalInformationPage,
 };
