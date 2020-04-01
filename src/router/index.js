@@ -5,10 +5,13 @@ import {
   Route,
 } from 'react-router-dom';
 import { Sidebar } from 'components';
-import sidebarRoutes from './sidebar.routes';
+import {
+  sidebarRoutes,
+  routes,
+} from './routes';
 
 function Router() {
-  const routes = Array.from(sidebarRoutes).reverse();
+  const sidebarMenuRoutes = Array.from(sidebarRoutes).reverse();
 
   return (
     <BrowserRouter>
@@ -19,6 +22,14 @@ function Router() {
             path={route.path}
             component={() => <Sidebar content={route.Component} />}
             exact={route.exact}
+          />
+        ))}
+        { sidebarMenuRoutes.map((sidebarMenuRoute, index) => (
+          <Route
+            key={index}
+            path={sidebarMenuRoute.path}
+            component={() => <Sidebar content={sidebarMenuRoute.Component} />}
+            exact={sidebarMenuRoute.exact}
           />
         ))}
       </Switch>

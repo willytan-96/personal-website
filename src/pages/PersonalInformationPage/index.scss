@@ -1,12 +1,9 @@
-.information-title {
-  margin-top: 7.5px!important;
-  margin-bottom: 20px!important;
-}
+@import 'constants/sass/size.scss';
 
 .information-row {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;;
+  margin-bottom: $size-10;
 }
 
 .information-row-label {
@@ -15,9 +12,9 @@
 }
 
 .information-icon {
-  margin-right: 10px;
+  margin-right: $size-10;
   svg {
-    height: 20px;
+    height: $size-20;
   }
 }
 
@@ -28,5 +25,5 @@
 }
 
 .separator {
-  margin: 0px 20px;
+  margin: 0px $size-20;
 }

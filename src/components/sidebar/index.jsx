@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdClose, MdMenu } from 'react-icons/md';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import sidebarMenus from 'router/sidebar.routes';
+import { sidebarRoutes } from 'router/routes';
 // Styling Sidebar
 import './styles.scss';
 
@@ -18,17 +18,27 @@ function Sidebar(props) {
   return (
     <div className='sidebar'>
       <div className={`sidebar-wrapper ${expandClassname}`}>
-        {sidebarMenus.map((menu, index) => {
+        {sidebarRoutes.map((menu, index) => {
           const {
             Icon,
             path,
             title
           } = menu;
 
+          // Check active state menu sidebar
+          let isActive = false;
+          if (currentPath === '/' && currentPath === path) {
+            isActive = true;
+          } else if (currentPath !== '/') {
+            const currentPaths = currentPath.split('/');
+            const sidebarPath = currentPaths[1];
+            isActive = path.includes(sidebarPath);
+          }
+
           return (
             <Link
               key={index}
-              className={`sidebar-menu-wrapper sidebar-item ${currentPath === path ? 'active' : ''}`}
+              className={`sidebar-menu-wrapper sidebar-item ${isActive ? 'active' : ''}`}
               to={path}
             >
               <Icon />

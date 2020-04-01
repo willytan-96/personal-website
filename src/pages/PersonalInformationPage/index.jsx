@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './styles.scss';
+import './index.scss';
 import { MdEmail, MdPhone, MdPermIdentity } from 'react-icons/md';
 
 function PersonalInformationPage() {
@@ -25,7 +25,7 @@ function PersonalInformationPage() {
 
   return (
     <React.Fragment>
-      <h3 className="heading-3 information-title">Personal Information</h3>
+      <h3 className="heading-3">Personal Information</h3>
       <div>
         {informations.map((information, index) => (
           <div className='information-row' key={index}>

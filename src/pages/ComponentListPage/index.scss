@@ -1,0 +1,14 @@
+@import 'constants/sass/color.scss';
+
+
+.component-list-item {
+  > a {
+    text-decoration: none;
+    text-transform: capitalize;
+    color: $color-primary;
+  }
+
+  > a:hover {
+    color: $color-primary--hover;
+  }
+}
