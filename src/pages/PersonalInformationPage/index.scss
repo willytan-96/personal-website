@@ -1,0 +1,29 @@
+@import 'constants/sass/size.scss';
+
+.information-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: $size-10;
+}
+
+.information-row-label {
+  display: flex;
+  width : 250px;
+}
+
+.information-icon {
+  margin-right: $size-10;
+  svg {
+    height: $size-20;
+  }
+}
+
+.information-label {
+  display: flex;
+  flex: 1 1 auto;
+  font-weight: 600;
+}
+
+.separator {
+  margin: 0px $size-20;
+}
