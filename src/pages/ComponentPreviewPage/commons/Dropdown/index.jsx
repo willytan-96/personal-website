@@ -1,44 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { Commons } from 'components';
 
-import './index.scss';
+import { text, stylesText } from './text';
 
-function Dropdown({
-  options,
-  ...rest
-}) {
-
-  const text = `
-import PropTypes from 'prop-types';
-import React from 'react';
-
-import './styles.scss';
-
-function Dropdown({
-  options,
-  ...rest,
-}) {
-  return (
-    <select className="dropdown" {...rest}>
-      { options.map((option, index) => (
-        <option key={index} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-Dropdown.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
-    }),
-  )
-};
-
-Dropdown.defaultProps = {
-  options: [
+function Dropdown() {
+  const defaultOptions = [
     {
       label: 'Option 1',
       value: '1',
@@ -47,28 +13,12 @@ Dropdown.defaultProps = {
       label: 'Option 2',
       value: '2',
     }
-  ],
-};
-  `;
-
-  const stylesText = `
-.dropdown {
-  padding: 10;
-  border-radius: 5;
-  outline: 0;
-}
-  `;
+  ];
 
   return (
     <React.Fragment>
       <h5 className="heading-5">Result :</h5>
-      <select className="dropdown" {...rest}>
-        { options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <Commons.Dropdown options={defaultOptions} selectedValue="2" />
       
 
       <h5 className="heading-5">Dropdown.jsx :</h5>
@@ -80,27 +30,6 @@ Dropdown.defaultProps = {
     </React.Fragment>
   );
 }
-
-Dropdown.propTypes = {
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]),
-    }),
-  )
-};
-
-Dropdown.defaultProps = {
-  options: [
-    {
-      label: 'Option 1',
-      value: '1',
-    },
-    {
-      label: 'Option 2',
-      value: '2',
-    }
-  ],
-};
 
 const param = 'dropdown';
 const Component = Dropdown;
