@@ -24,7 +24,7 @@ function Dropdown() {
       <h5 className="heading-5">Dropdown.jsx :</h5>
       <pre>{text}</pre>
 
-      <h5 className="heading-5">Styles.scss</h5>
+      <h5 className="heading-5">index.scss</h5>
       <pre>{stylesText}</pre>
       
     </React.Fragment>
